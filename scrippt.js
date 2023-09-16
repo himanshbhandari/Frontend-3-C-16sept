@@ -16,19 +16,22 @@ async function MovieDetails(){
     
     try{//fetching data from api
         const response=await fetch(`https://www.omdbapi.com/?s=${searchString}&apikey=${api_key}`)
-        var data=await response.json();
+        const data=await response.json();
+        renderData(data);
     }
     catch{
-        alert("invalid api key")
+        alert("Something wrong! invalid API-key or Movie name")
     }
-    loader.classList.remove('loader-on') //after data sucessfully loaded turn of our loader here
+    
+    
+}
 
+
+function renderData(data){
+    loader.classList.remove('loader-on') //after data sucessfully loaded turn of our loader here
     let arr=data.Search;
     //if user entered wrong movie name which is no avialble
-    if(arr===undefined){
-        return alert("this moive not found search another movie") 
-
-    }
+    
     mainPage.innerHTML=''; 
     //itertating  arrray  using forEach loop
     arr.forEach((element)=>{
@@ -49,9 +52,10 @@ async function MovieDetails(){
         mainPage.appendChild(cardContainer);
         // console.log(cardContainer);
     });
-    
 
 }
+
+
 form.addEventListener("submit" ,function(event){
     event.preventDefault();
 })
