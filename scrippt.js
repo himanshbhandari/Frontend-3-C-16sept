@@ -33,7 +33,9 @@ async function MovieDetails(){
     //itertating  arrray  using forEach loop
     arr.forEach((element)=>{
         // console.log(element);
-
+        if(element.Poster==='N/A'){
+            element.Poster='https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg';
+        }
         const cardContainer=document.createElement('div');
         cardContainer.className="card-container";
         // console.log(cardContainer.className);
